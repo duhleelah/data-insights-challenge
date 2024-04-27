@@ -12,8 +12,14 @@ SPARK_DRIVER_MEMORY = "spark.driver.memory"
 SPARK_DRIVER_MEMORY_SET = "32g"
 SPARK_AUTOBROADCAST_THRESHOLD = "spark.sql.autoBroadcastJoinThreshold"
 SPARK_AUTOBROADCAST_THRESHOLD_SET = "-1"
-SPARK_EXECUTOR_MEM_OVERHEAD = 'spark.executor.memoryOverhead'
-SPARK_EXECUTOR_MEM_OVERHEAD_SET = '1500'
+SPARK_EXECUTOR_MEM_OVERHEAD = "spark.executor.memoryOverhead"
+SPARK_EXECUTOR_MEM_OVERHEAD_SET = "1500"
+
+# Column names
+MAKER = "maker"
+MODEL = "model"
+ZERO = 0
+
 
 def create_spark() -> SparkSession:
     """
@@ -23,9 +29,9 @@ def create_spark() -> SparkSession:
     - Returns:
         - SparkSession
     """
-    spark =(
+    spark = (
         SparkSession.builder.appName(SPARK_APP_NAME)
-        .config(SPARK_EAGER_VAL, SPARK_EAGER_VAL_SET) 
+        .config(SPARK_EAGER_VAL, SPARK_EAGER_VAL_SET)
         .config(SPARK_CACHE_METADATA, SPARK_CACHE_METADATA_SET)
         .config(SPARK_TIMEZONE, SPARK_TIMEZONE_SET)
         .config(SPARK_DRIVER_MEMORY, SPARK_DRIVER_MEMORY_SET)
@@ -33,4 +39,4 @@ def create_spark() -> SparkSession:
         .config(SPARK_EXECUTOR_MEM_OVERHEAD, SPARK_EXECUTOR_MEM_OVERHEAD_SET)
         .getOrCreate()
     )
-    return spark 
+    return spark
