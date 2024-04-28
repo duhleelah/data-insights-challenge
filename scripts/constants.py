@@ -20,6 +20,12 @@ MAKER = "maker"
 MODEL = "model"
 ZERO = 0
 
+# Directory
+PREFIX = ".."
+DATA_DIR = "/data"
+LANDING_DIR = DATA_DIR + "/landing"
+CURATED_DIR = DATA_DIR + "/curated"
+
 
 def create_spark() -> SparkSession:
     """
